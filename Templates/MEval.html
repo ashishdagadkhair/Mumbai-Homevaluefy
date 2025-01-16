@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+        .name{
+    text-align: center;
+    align-items: center;
+}
+
+.navbar-main {
+    box-shadow: 1px 1px 15px 1px black;
+    margin:0 ;
+    height: 80px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif sans-serif;
+}
+
+
+/* CSS for form */
+
+label, input,textarea {
+    display: block;
+  }
+  
+  input,select, textarea {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 80%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 10px 1px gray;
+  }
+ 
+ #form-container{
+    background-color: #ECF2FF;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    margin: 3% 5%;
+ }
+
+ .house-image{
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #0F6292;
+    border-radius: 5px;
+ }
+
+ .me-container-main{
+    display: flex;
+    justify-content: space-around;
+    margin: 5%;
+    text-align: center;
+ }
+ .ME-img{
+    height: 200px;
+    width: 15rem;
+ }
+
+ .me-img-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px
+ }
+    </style>
+</head>
+<body>
+
+       <!-- navbar starts -->
+
+       <nav class="navbar-main" style="background-color: #0094ff">
+        <div class="container-fluid">
+          <h3 class="name">Mumbai HomeValuify</h3>
+        </div>
+        <div class="container-fluid">
+          <a href="https://app.powerbi.com/groups/me/reports/13a397d6-ba80-426c-8e64-c6d8ca0fa6ee/ReportSection?experience=power-bi" width="100%" height="600" target="_blank"> <button type="button" class="btn btn-warning">Dashboard</button>
+          </a>
+        </div>
+      </nav>
+  
+      <!-- navbar ends -->
+      <a href="/"> <button style="margin: 30px;" class="btn btn-primary">Home</button></a>
+
+   <div class="me-img-1">
+    <div class="card " style="width: 30rem;">
+        <img class="card-img-top" src="{{url_for('static',filename='ModelComparison.png')}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Model Comparison</h5>
+        </div>
+      </div>
+   </div>
+
+      <div class="row me-container-main">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top ME-img" src="{{url_for('static',filename='FeatureImportance.png')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Feature Importance</h5>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top ME-img" src="{{url_for('static',filename='ResidualPlot.png')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Residual Plot</h5>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top ME-img" src="{{url_for('static',filename='TrainTestScores.png')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Train Test Scores</h5>
+            </div>
+          </div>
+      </div>
+    
+</body>
+</html>

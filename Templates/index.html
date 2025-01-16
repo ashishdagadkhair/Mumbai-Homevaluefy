@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House Price Predictor</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+        .name{
+    text-align: center;
+    align-items: center;
+}
+
+.navbar-main {
+    box-shadow: 1px 1px 15px 1px black;
+    margin:0 ;
+    height: 80px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif sans-serif;
+}
+
+
+/* CSS for form */
+
+label, input,textarea {
+    display: block;
+  }
+  
+  input,select, textarea {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 80%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 10px 1px gray;
+  }
+ 
+ #form-container{
+    background-color: #ECF2FF;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    margin: 3% 5%;
+ }
+
+ .house-image{
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #0F6292;
+    border-radius: 5px;
+ }
+    </style>
+  </head>
+  <body>
+    <!-- navbar starts -->
+
+    <nav class="navbar-main" style="background-color: #0094ff">
+      <div class="container-fluid">
+        <h3 class="name">Mumbai HomeValuify</h3>
+      </div>
+      <div class="container-fluid">
+        <a href="https://app.powerbi.com/groups/me/reports/f23b3287-4758-4799-afd3-b139159ff42b/ReportSection?experience=power-bi" width="100%" height="600" target="_blank"> <button type="button" class="btn btn-warning">Dashboard</button>
+
+          <a href="/modelEvaluation" width="100%" height="600" target="_blank"> <button type="button" class="btn btn-warning">Model Evaluation</button>
+        </a>
+      </div>
+    </nav>
+
+    <!-- navbar ends -->
+
+    <!-- Form starts -->
+     <div class="row" id="form-container">
+        <div style="padding: 10px;" class="col-lg-6">
+            <img class="house-image" src="{{url_for('static',filename='house.jpg')}}" alt="">
+        </div>
+        <div class="col-lg-6">
+            <form action="/result" method="post" >
+                <label for="locationSelect">Select a Location:</label>
+            <select id="locationSelect" name = "locationSelect"required>
+                <option value="Chembur">Chembur</option>
+                <option value="Kurla">Kurla</option>
+                <option value="Malad West">Malad West</option>
+                <option value="Rasayani">Rasayani</option>
+                <option value="Vikhroli">Vikhroli</option>
+                <option value="Neral">Neral</option>
+                <option value="Mahim">Mahim</option>
+                <option value="Fort">Fort</option>
+                <option value="Dombivali">Dombivali</option>
+                <option value="Palghar">Palghar</option>
+                <option value="Malad East">Malad East</option>
+                <option value="Vangani">Vangani</option>
+                <option value="Jogeshwari West">Jogeshwari West</option>
+                <option value="Dahisar">Dahisar</option>
+                <option value="Borivali East">Borivali East</option>
+                <option value="Mulund West">Mulund West</option>
+                <option value="Kharghar">Kharghar</option>
+                <option value="Vasai">Vasai</option>
+                <option value="Santacruz East">Santacruz East</option>
+                <option value="Ambernath East">Ambernath East</option>
+                <option value="Andheri West">Andheri West</option>
+                <option value="Mazagaon">Mazagaon</option>
+                <option value="Karjat">Karjat</option>
+                <option value="Khopoli">Khopoli</option>
+                <option value="Goregaon East">Goregaon East</option>
+                <option value="Panvel">Panvel</option>
+                <option value="Kalyan West">Kalyan West</option>
+                <option value="Andheri East">Andheri East</option>
+                <option value="Dronagiri">Dronagiri</option>
+                <option value="Umroli">Umroli</option>
+                <option value="Virar">Virar</option>
+                <option value="Kalyan East">Kalyan East</option>
+                <option value="Thane West">Thane West</option>
+                <option value="Shahapur">Shahapur</option>
+                <option value="Taloja">Taloja</option>
+                <option value="Ulwe">Ulwe</option>
+                <option value="Badlapur East">Badlapur East</option>
+                <option value="Titwala">Titwala</option>
+                <option value="Diva">Diva</option>
+                <option value="Kamothe">Kamothe</option>
+                <option value="Bhiwandi">Bhiwandi</option>
+                <option value="Kandivali West">Kandivali West</option>
+                <option value="Powai">Powai</option>
+                <option value="Badlapur West">Badlapur West</option>
+                <option value="Dombivali East">Dombivali East</option>
+                <option value="Mira Road East">Mira Road East</option>
+                <option value="Vasai east">Vasai east</option>
+                <option value="Wada">Wada</option>
+                <option value="Dadar East">Dadar East</option>
+                <option value="Colaba">Colaba</option>
+                <option value="Sion">Sion</option>
+                <option value="Santosh Nagar">Santosh Nagar</option>
+                <option value="Virar East">Virar East</option>
+                <option value="Agripada">Agripada</option>
+                <option value="Gorai">Gorai</option>
+                <option value="Virar West">Virar West</option>
+                <option value="Santacruz West">Santacruz West</option>
+                <option value="Kalwa">Kalwa</option>
+                <option value="Nala Sopara">Nala Sopara</option>
+                <option value="Hendre Pada">Hendre Pada</option>
+                <option value="Vasai West">Vasai West</option>
+                <option value="Mazgaon">Mazgaon</option>
+                <option value="Belapur">Belapur</option>
+                <option value="Borivali West">Borivali West</option>
+                <option value="Nerul">Nerul</option>
+                <option value="Kumbharkhan Pada">Kumbharkhan Pada</option>
+                <option value="Ghatkopar West">Ghatkopar West</option>
+                <option value="Khadawali">Khadawali</option>
+                <option value="Mulund East">Mulund East</option>
+                <option value="Kalamboli">Kalamboli</option>
+                <option value="Karanjade">Karanjade</option>
+                <option value="Kanjurmarg">Kanjurmarg</option>
+                <option value="Anjurdive">Anjurdive</option>
+                <option value="Navade">Navade</option>
+                <option value="Airoli">Airoli</option>
+                <option value="matunga east">matunga east</option>
+                <option value="Vichumbe">Vichumbe</option>
+                <option value="Goregaon West">Goregaon West</option>
+                <option value="Bhangarwadi">Bhangarwadi</option>
+                <option value="Bandra West">Bandra West</option>
+                <option value="Mandvi">Mandvi</option>
+                <option value="Kamathipura">Kamathipura</option>
+                <option value="Nalasopara West">Nalasopara West</option>
+                <option value="Bhayandar West">Bhayandar West</option>
+                <option value="Boisar">Boisar</option>
+                <option value="Dharamveer Nagar">Dharamveer Nagar</option>
+                <option value="Bhayandar East">Bhayandar East</option>
+                <option value="Diva Gaon">Diva Gaon</option>
+                <option value="Parel">Parel</option>
+                <option value="Sanpada">Sanpada</option>
+                <option value="Jogeshwari East">Jogeshwari East</option>
+                <option value="Girgaon">Girgaon</option>
+                <option value="Koper Khairane">Koper Khairane</option>
+                <option value="Dombivli (West)">Dombivli (West)</option>
+                <option value="Taloje">Taloje</option>
+                <option value="Dundare">Dundare</option>
+                <option value="Pale Bk.">Pale Bk.</option>
+                <option value="Thakurli">Thakurli</option>
+                <option value="Bhandup West">Bhandup West</option>
+                <option value="Seawoods">Seawoods</option>
+                <option value="Vikhroli West">Vikhroli West</option>
+                <option value="Kandivali East">Kandivali East</option>
+                <option value="Sewri">Sewri</option>
+                <option value="Ghatkopar East">Ghatkopar East</option>
+                <option value="Kanjurmarg East">Kanjurmarg East</option>
+                <option value="Kurla West">Kurla West</option>
+                <option value="Vevoor">Vevoor</option>
+                <option value="Nalasopara East">Nalasopara East</option>
+                <option value="Ville Parle East">Ville Parle East</option>
+                <option value="Mumbai Central">Mumbai Central</option>
+                <option value="Shelu">Shelu</option>
+                <option value="Palava">Palava</option>
+                <option value="Byculla">Byculla</option>
+                <option value="New Balaji Nagar">New Balaji Nagar</option>
+                <option value="Dahisar East">Dahisar East</option>
+                <option value="Vasind">Vasind</option>
+                <option value="Juhu">Juhu</option>
+                <option value="Wadala">Wadala</option>
+                <option value="Dahisar West">Dahisar West</option>
+                <option value="Ambivli">Ambivli</option>
+                <option value="Navapada">Navapada</option>
+                <option value="Kurla East">Kurla East</option>
+                <option value="Greater Khanda">Greater Khanda</option>
+                <option value="Ambernath West">Ambernath West</option>
+                <option value="Dadar West">Dadar West</option>
+                <option value="Napeansea Road">Napeansea Road</option>
+                <option value="Vishnu Nagar">Vishnu Nagar</option>
+                <option value="Nilje Gaon">Nilje Gaon</option>
+                <option value="Vikroli East">Vikroli East</option>
+                <option value="Prabhadevi">Prabhadevi</option>
+                <option value="Khar West">Khar West</option>
+                <option value="Masjid Bandar">Masjid Bandar</option>
+                <option value="Beturkar Pada">Beturkar Pada</option>
+                <option value="Ghodbander">Ghodbander</option>
+                <option value="Datiwali Gaon">Datiwali Gaon</option>
+                <option value="Saphale">Saphale</option>
+                <option value="Bandra East">Bandra East</option>
+                <option value="Naigaon West">Naigaon West</option>
+                <option value="Koproli">Koproli</option>
+                <option value="Shil Phata">Shil Phata</option>
+                <option value="Cuffe Parade">Cuffe Parade</option>
+                <option value="Lower Parel">Lower Parel</option>
+                <option value="Vashi">Vashi</option>
+                <option value="Deonar">Deonar</option>
+                <option value="Matunga">Matunga</option>
+                <option value="Ulhasnagar">Ulhasnagar</option>
+                <option value="kasaradavali thane west">kasaradavali thane west</option>
+                <option value="Peddar Road">Peddar Road</option>
+                <option value="Naigaon East">Naigaon East</option>
+                <option value="LBS Marg">LBS Marg</option>
+                <option value="Hiranandani Estates">Hiranandani Estates</option>
+                <option value="Bhandup East">Bhandup East</option>
+                <option value="Rabale">Rabale</option>
+                <option value="Atgaon">Atgaon</option>
+                <option value="Ghansoli">Ghansoli</option>
+                <option value="Dighe">Dighe</option>
+                <option value="Worli">Worli</option>
+                <option value="Kharodi">Kharodi</option>
+                <option value="Madanpura">Madanpura</option>
+                <option value="Dahisar Navi mumbai">Dahisar Navi mumbai</option>
+                <option value="Khar">Khar</option>
+                <option value="Bandra Kurla Complex">Bandra Kurla Complex</option>
+            </select>
+               
+                <label for="sqftInput" >Sqft Area:</label>
+                <input type="number" id="sqftInput" name="sqftInput" placeholder="Enter Sqft Area" min="100" step="1" required>
+                
+                <label for="bhkOrRkSelect">Select BHK or RK:</label>
+                <select id="bhkOrRkSelect" name="bhkOrRk" required>
+                    <option value="BHK">BHK</option>
+                    <option value="RK">RK</option>
+                </select>
+                <br>
+            
+                <label for="bedroomsInput">Enter Number of Bedrooms:</label>
+                <input type="number" id="bedroomsInput" name="bedroomsInput" placeholder="Number of Bedrooms" min="1" max="6" step="1" required>
+            
+        
+        
+            <label for="propertyTypeSelect">Select Property Type:</label>
+            <select id="propertyTypeSelect" name="propertyType" required>
+                <option value="Apartment">Apartment</option>
+                <option value="Independent Floor">Independent Floor</option>
+                <option value="Independent House">Independent House</option>
+                <option value="Studio Apartment">Studio Apartment</option>
+                <option value="Villa">Villa</option>
+            </select>
+        <br>
+            <button  type="submit" class="btn btn-primary" id='submit-btn'>Submit</button> 
+            <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+            
+        </div>
+     </div>
+    <!-- Form Ends -->
+
+
+    <script>
+        const bhkOrRkSelect = document.getElementById("bhkOrRkSelect");
+        const bedroomsInput = document.getElementById("bedroomsInput");
+
+        bhkOrRkSelect.addEventListener("change", function() {
+            if (bhkOrRkSelect.value === "RK") {
+                bedroomsInput.value = 1;  // Set the default value to 1
+                bedroomsInput.disabled = true;  // Disable the input field
+            } else {
+                bedroomsInput.value = "";  // Clear the default value
+                bedroomsInput.disabled = false;  // Enable the input field
+            }
+        });
+    </script>
+  </body>
+</html>
